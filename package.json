@@ -1,7 +1,8 @@
 {
-  "name": "logger-web",
+  "name": "web-logger",
   "version": "1.0.0",
   "description": "logger for web",
+  "main": "./lib/index.js",
   "scripts": {
     "serve": "node server.js",
     "build": "webpack",
@@ -10,7 +11,7 @@
   "keywords": [
     "logger"
   ],
-  "author": "guangzhen.ju",
+  "author": "guangzhen_ju <guangzhen_ju@163.com>",
   "license": "MIT",
   "dependencies": {
     "dexie": "^3.0.3",
@@ -19,10 +20,15 @@
     "webpack": "^5.38.1",
     "webpack-cli": "^4.7.2"
   },
-  "private": true,
+  "private": false,
   "browserslist": [
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/juguangzhen/web-logger"
+  },
+  "homepage": "https://github.com/juguangzhen/web-logger"
 }
