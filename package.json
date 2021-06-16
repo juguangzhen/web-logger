@@ -1,0 +1,28 @@
+{
+  "name": "logger-web",
+  "version": "1.0.0",
+  "description": "logger for web",
+  "scripts": {
+    "serve": "node server.js",
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "logger"
+  ],
+  "author": "guangzhen.ju",
+  "license": "MIT",
+  "dependencies": {
+    "dexie": "^3.0.3",
+    "express": "^4.17.1",
+    "ip": "^1.1.5",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.2"
+  },
+  "private": true,
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}

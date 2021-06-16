@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <script src="./lib/index.js"></script> -->
+  <script type="module">
+    import Database from './lib/index.js'
+    console.log(Database, 'Database')
+  </script>
+  <!-- <script type="module">
+    import Database from '../lib/index.js'
+    
+    window.database = new Database({ userName: 'jiahong' })
+    console.log(window.database)
+  </script> -->
+  <script>
+    function addData() {
+      console.log('9988')
+      window.database.addLogger('11111')
+    }
+
+    function exportToExl() {
+      window.database.exportLogger()
+    }
+
+    async function searchLog() {
+      let list = await window.database.getLogger()
+      console.log(list, 'list')
+      // window.database.getLogger().then(res => {
+      //   console.log(res, 'res')
+        
+      // })
+      
+    }
+  </script>
+  
+</head>
+<body>
+  hello world!
+  <button onclick="addData()">添加一些数据</button>
+  <button onclick="searchLog()">查询日志</button>
+  <button onclick="exportToExl()">导出Excel</button>
+</body>
+</html>
