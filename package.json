@@ -1,5 +1,5 @@
 {
-  "name": "web-logger",
+  "name": "rhea-log",
   "version": "1.0.0",
   "description": "logger for web",
   "main": "./lib/index.js",
