@@ -8,7 +8,7 @@ import Dexie from 'dexie'
 // const Dexie = require('dexie')
 
 export default class Database extends Dexie {
-  constructor({ userName }) {
+  constructor({ userName, expirationTime }) {
     if(typeof userName !== 'string') {
       throw 'userName must be string'
     }
@@ -45,7 +45,7 @@ export default class Database extends Dexie {
 
     this.navigatorList = ['userAgent', 'platform', 'vendor']
 
-    this.expirationTime = 2*24*3600*1000 // 保留近2天的日志
+    this.expirationTime = (expirationTime || 2)*24*3600*1000 // 保留近2天的日志
 
     this.version(1).stores({
       logger: '++id, timeStamp'
@@ -129,8 +129,8 @@ export default class Database extends Dexie {
     }
   }
 
-  // 导出  默认只查询今天的
-  async exportLogger(start = new Date().setHours(0,0,0,0), end = Date.now()) {
+  // 导出  默认查询最近24小时
+  async exportLogger(start = new Date(new Date().setHours(new Date().getHours() - 24)).getTime(), end = Date.now()) {
     // this.#log('导出开始....')
     const TEMPLATE_XLS = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
         <meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8"/>
@@ -145,7 +145,7 @@ export default class Database extends Dexie {
       title: 'this._title',
       table: await this.objectToTable(start, end),
     };
-    console.log(parameters, 'parameters')
+    // console.log(parameters, 'parameters')
     // this.#log(parameters, '处理输出...')
     const computeOutput = TEMPLATE_XLS.replace(/{(\w+)}/g, (x, y) => parameters[y])
 
